@@ -1,6 +1,58 @@
-/BxnjaggsTest
-│── index.html
-│── /images
-│   └── flower.png
-│── /css
-│   └── index.css (opcional, si querés estilos separados)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Flores para Abril</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #ffcc00, #ff6699);
+            color: white;
+        }
+        .flower-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .flower {
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .flower:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Para Abril con amor 💛</h1>
+    <div class="flower-container" id="flowerContainer"></div>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const flowerType = urlParams.get('type');
+        const flowerContainer = document.getElementById("flowerContainer");
+        
+        function createFlower() {
+            let img = document.createElement("img");
+            img.src = "images/flower.png";
+            img.classList.add("flower");
+            return img;
+        }
+        
+        if (flowerType === "one") {
+            flowerContainer.appendChild(createFlower());
+        } else if (flowerType === "hundred") {
+            for (let i = 0; i < 100; i++) {
+                flowerContainer.appendChild(createFlower());
+            }
+        }
+    </script>
+</body>
+</html>
