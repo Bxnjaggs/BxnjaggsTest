@@ -3,56 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/gift.png" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css">
-    <title>Flores para Abril</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #ffcc00, #ff6699);
-            color: white;
-        }
-        .flower-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-        }
-        .flower {
-            width: 80px;
-            height: 80px;
-            margin: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .flower:hover {
-            transform: scale(1.2);
-        }
-    </style>
+    <title>I Have Something</title>
 </head>
 <body>
-    <h1>Para Abril con amor 💛</h1>
-    <div class="flower-container" id="flowerContainer"></div>
+    <div class="night"></div>
+    <h1 class="title">Elige tu flor</h1>
+
+    <div class="button-container">
+        <a href="flower.html?type=one" class="btn">
+            <span class="text">Una Flor</span>
+        </a>
+        <a href="flower.html?type=hundred" class="btn">
+            <span class="text">100 Flores</span>
+        </a>
+    </div>
     
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const flowerType = urlParams.get('type');
-        const flowerContainer = document.getElementById("flowerContainer");
-        
-        function createFlower() {
-            let img = document.createElement("img");
-            img.src = "images/flower.png";
-            img.classList.add("flower");
-            return img;
-        }
-        
-        if (flowerType === "one") {
-            flowerContainer.appendChild(createFlower());
-        } else if (flowerType === "hundred") {
-            for (let i = 0; i < 100; i++) {
-                flowerContainer.appendChild(createFlower());
-            }
-        }
-    </script>
+    <script src="js/index.js"></script>
 </body>
 </html>
