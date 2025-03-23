@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas Interactivas</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #ffcc00, #ff6699);
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .card {
+            width: 150px;
+            height: 200px;
+            background: white;
+            color: black;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+        .message.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .close {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: none;
+            background: #ff6699;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cartas para Abril 💌</h1>
+    <div class="container">
+        <div class="card" onclick="showMessage(0)">Carta 1</div>
+        <div class="card" onclick="showMessage(1)">Carta 2</div>
+        <div class="card" onclick="showMessage(2)">Carta 3</div>
+    </div>
+
+    <div id="messageBox" class="message">
+        <p id="messageText"></p>
+        <button class="close" onclick="closeMessage()">Cerrar</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Mensaje de la Carta 1", 
+            "Mensaje de la Carta 2", 
+            "Mensaje de la Carta 3"
+        ];
+
+        function showMessage(index) {
+            const messageBox = document.getElementById("messageBox");
+            document.getElementById("messageText").innerText = messages[index];
+            messageBox.classList.add("show");
+            messageBox.style.display = "block";
+        }
+
+        function closeMessage() {
+            const messageBox = document.getElementById("messageBox");
+            messageBox.classList.remove("show");
+            setTimeout(() => { messageBox.style.display = "none"; }, 300);
+        }
+    </script>
+</body>
+</html>
 
